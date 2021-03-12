@@ -1,0 +1,33 @@
+.nav {
+    grid-area: n;
+    background-color: burlywood;
+    padding: 20px;
+ }
+ .item a {
+     color: white;
+     text-decoration: none;
+ }
+ .item a.active{
+     color: gold;
+ }
+ .friends {
+     margin-top: 30px;
+ }
+ .friends a {
+    font-size: 30px;
+    color: white;
+ }
+ .friendsitems img {
+     max-width: 40px;
+ }
+ .fre {
+     display: inline-block;
+     margin-right: 13px;
+     min-width: 45px;
+     margin-top: 10px;
+     
+ }
+ .name {
+     max-width: 45px;
+     font-size: 11px;
+ }
