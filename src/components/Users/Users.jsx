@@ -8,7 +8,6 @@ import Paginator from "./Paginator";
 
 let Users = (props) => {
 
-
     let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
 
    let pages = [];
@@ -40,8 +39,8 @@ let Users = (props) => {
                        <div>{u.status}</div>
                    </span>
                    <span>
-                       <div>{"u.location.city"}</div>
-                       <div>{"u.location.country"}</div>
+                       <div>{u.city}</div>
+                       <div>{u.country}</div>
                    </span>
                </span>
 

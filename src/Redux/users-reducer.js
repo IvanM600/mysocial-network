@@ -16,7 +16,6 @@ let initialSate = {
     currentPage: 1,
     isFetching: true,
     followingInProgress: []
-
 };
 
 
@@ -86,7 +85,7 @@ export const requestUsers = (page, pageSize) => {
 const followUnfollowFlow = async (dispatch, userId, apiMethod, actionCreator) => {
     dispatch(toggleFollowingProgress(true, userId));
       let response = await apiMethod(userId)
-if (response.data.resultCode == 0) {
+if (response.data.resultCode === 0) {
 dispatch(actionCreator(userId));
 }
 dispatch(toggleFollowingProgress(false, userId));

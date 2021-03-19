@@ -1,11 +1,12 @@
 import * as axios from "axios"
+import { savePhoto } from "../Redux/profile-reducer";
 
 
  const instance = axios.create({
         withCredentials: true,
         baseURL: `https://social-network.samuraijs.com/api/1.0/`,
         headers: {  
-            "API-KEY": "4f168b56-2b77-485e-ac7f-4971280d1b29"
+            "API-KEY": "d59d0a96-dc14-4681-953e-c6b49c967a3e"
         }
      
  });
@@ -43,6 +44,18 @@ import * as axios from "axios"
    },
    updateStatus(status) {
       return instance.put(`profile/status`, {status: status});
+   },
+   savePhoto(photoFile){
+      const formData = new FormData();
+      formData.append("image", photoFile);
+      return instance.put(`profile/photo`, formData, {
+         headers: {
+            "Content-Type": "multipart/form-data"
+         }
+      });
+   },
+   saveProfile(profile){
+      return instance.put(`profile`, profile);
    }
 
 }
@@ -52,12 +65,18 @@ import * as axios from "axios"
    return instance.get(`auth/me`)
    },
 
-   login (email, password, rememberMe = false) {
-      return instance.post(`auth/login`, {email, password, rememberMe})
+   login (email, password, rememberMe = false, captcha = null) {
+      return instance.post(`auth/login`, {email, password, rememberMe, captcha})
       },
       logout () {
          return instance.delete(`auth/login`)
          }
+ }
+
+ export const securityAPI = {
+   getCaptchaUrl() {
+   return instance.get(`security/get-captcha-url`)
+   },
  }
 
  
