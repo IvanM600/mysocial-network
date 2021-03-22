@@ -10,8 +10,6 @@ const maxLength10 = maxLengthCreator(10)
 
 class MyPosts extends Component {
 
-
-
 render() {
   let addNewPost = (values) => {
     this.props.addPost(values.newPostText)
@@ -20,7 +18,8 @@ render() {
   let newPostElements = React.createRef();
   
   let postsElements = this.props.posts
-  .map( posts => <Post message={posts.message} likesCount={posts.likesCount} />)
+  .map( posts => <Post message={posts.message} likesCount={posts.likesCount} profile={this.props.profile} />)
+
   return (
     <div className={classes.postsBlock}>
       <h3>My posts</h3>
@@ -38,7 +37,7 @@ render() {
 
 const MyForm = (props) => {
   return ( 
-  <form onSubmit={props.handleSubmit}>
+  <form className={classes.myPosts} onSubmit={props.handleSubmit}>
     <div>
          <Field placeholder="Enter your message" name="newPostText" component={Textarea} validate={[required, maxLength10]}/>
     </div>

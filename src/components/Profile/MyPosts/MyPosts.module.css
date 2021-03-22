@@ -1,7 +1,36 @@
 .postsBlock {
-    padding: 10px;
+   padding-left: 8px;
+    
 }
 
 .Posts {
     margin-top: 10px;
+    
 }
+.myPosts button {
+    margin-top: 14px;
+    padding: 10px 20px ;
+    border: none; 
+    border-radius: 5px; 
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-size: 16xp;
+    color :#fff ; 
+    background-color: #808080; 
+    outline: none; 
+    cursor: pointer; 
+    transition: 0.3s; 
+    margin-left: 5px;
+}
+
+.myPosts button:hover,
+.myPosts button:focus{
+    background-color: rgba(0, 113, 240, 0.7); 
+  }
+  .myPosts button:active{
+   background: rgb(255, 255, 255, .2);
+  }
+
+  .postsBlock h3 {
+      font-size: 20px;
+  }

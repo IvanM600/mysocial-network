@@ -1,14 +1,39 @@
 .header{
     grid-area: h;
-    background-color: green;
+    background-color: #808080;
  }
  .header img {
-   width: 20px;
+   width: 30px;
  }
  .loginBlock {
    float: right;
+   margin: 5px 5px;
  }
-
-
+ .buttonLogout, .buttonLogin{
+   margin-top: 10px;
+   display: inline-block;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  user-select: none;
+  padding: 3px 3px;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+  
+ }
+ .buttonLogout:active{
+   background: white;
+ }
+ .buttonLogout:hover{
+  background: rgb(255, 255, 255, .2);
+ }
+ .buttonLogin:active{
+  background: white;
+ }
+ .buttonLogin:hover{
+  background: rgb(255, 255, 255, .2);
+ }
 
  

@@ -1,10 +1,41 @@
 .descriptionBlock {
     padding: 10px;
 }
-
 .mainPhoto {
     max-width: 200px;
 }
 .contact {
     padding-left: 20px;
 }
+
+.formEdit button, .descriptionBlock input, .form button{
+    margin-top: 10px;
+   display: inline-block;
+  color: black;
+  font-weight: 500;
+  text-decoration: none;
+  user-select: none;
+  padding: 3px 3px;
+  outline: none;
+  border: 2px solid;
+  border-radius: 1px;
+  transition: 0.2s;
+}
+.formEdit button:hover{
+    background: white;
+  }
+  .formEdit button:active{
+   background: rgb(255, 255, 255, .2);
+  }
+  .form button:hover {
+    background: white;
+  }
+  .form button:active{
+    background: rgb(255, 255, 255, .2);
+  }
+
+  .form input, textarea {
+    resize: none;
+    background-color: honeydew;
+  }
+  

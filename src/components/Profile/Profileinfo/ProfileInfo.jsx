@@ -44,7 +44,7 @@ const ProfileInfo = (props) => {
 }
 
 const ProfileBlock = (props) => {
-    return <div> 
+    return <div className={classes.formEdit}> 
                   { props.isOwner && <div><button onClick={props.goToEditMode}>Edit</button></div> }
                    <div>
                      <b>Full name</b>: {props.profile.fullName}

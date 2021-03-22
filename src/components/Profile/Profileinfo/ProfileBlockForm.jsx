@@ -6,7 +6,7 @@ import classes from "./ProfileInfo.module.css"
 
 
 const ProfileBlockForm = (props, error) => {
-    return <form onSubmit={props.handleSubmit}> 
+    return <form className={classes.form} onSubmit={props.handleSubmit}> 
                   {<div><button>Save</button></div> }
                   { props.error && <div className={classes.formSummaryError}>
                         {props.error}
@@ -31,7 +31,7 @@ const ProfileBlockForm = (props, error) => {
                             <b>{key}: <Field placeholder={key} name={"contacts." + key} component={Input}/></b>
                         </div>
                      })}
-                    </div>
+                  </div>
                </form>
  }
 const ProfileBlockFormReduxForm = reduxForm({form: "edit-profile"})(ProfileBlockForm);

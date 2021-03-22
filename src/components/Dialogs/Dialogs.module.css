@@ -4,12 +4,29 @@
 }
 
 .dialogsItems {
-    padding: 10px;
+    padding: 20px;
     color: white;
 }
 .dialogsItems .active {
     color: gold;
 }
+.dialogButton button {
+    margin-top: 14px;
+    padding: 10px 20px ;
+    border: none; 
+    border-radius: 5px; 
+    font-family: sans-serif;
+    letter-spacing: 1px;
+    font-size: 16xp;
+    color :#fff ; 
+    background-color: #808080; 
+    outline: none; 
+    cursor: pointer; 
+    transition: 0.3s; 
+}
+/*.dialog .active {
+    color: gold;
+}*/
 
 .messages {
     padding: 10px;
@@ -17,4 +34,17 @@
 }
 .messages .message {
     color: black;
+}
+
+.dialogButton button:focus,
+.dialogButton button:hover{
+    background-color: rgba(0, 113, 240, 0.7); 
+}
+
+.dialogButton button:focus {
+border-bottom: 1px solid #1a73a8;
+}
+.dialogsForm textarea {
+    resize: none;
+    background-color: honeydew;
 }

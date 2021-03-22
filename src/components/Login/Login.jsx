@@ -11,15 +11,17 @@ const maxLength25 = maxLengthCreator(25)
 
 const LoginForm = (props) => {
     return  (
-            <form onSubmit={props.handleSubmit}>
+            <form className={classes.form} onSubmit={props.handleSubmit}>
+                <h1>Login</h1>
                  <div>
-                     <Field placeholder={"email"} name={"email"} component={Input} validate={[required, maxLength25]}/>
+                     <Field className={classes.form_input} placeholder={"Email"} name={"email"} component={Input} validate={[required, maxLength25]}/>
                  </div>
                  <div>
-                     <Field placeholder={"Password"} name={"password"} component={Input} validate={[required, maxLength25]} type={"password"}/>
+                     <Field className={classes.form_input} placeholder={"Password"} name={"password"} component={Input} validate={[required, maxLength25]} type={"password"}/>
                  </div>
-                 <div>
-                     <Field component={Input} validate={[required, maxLength25]} name={"rememberMe"} type={"checkbox"}/> remember me
+                 <div className={classes.form_checkbox}>
+                     <Field component={Input} validate={[required, maxLength25]} name={"rememberMe"} type={"checkbox"}/>
+                      remember me
                  </div>
 
                  {props.captchaUrl && <img src={props.captchaUrl}/>}
@@ -28,7 +30,7 @@ const LoginForm = (props) => {
                         {props.error}
                  </div> }
                  <div>
-                     <button>Login</button>
+                     <button className={classes.form_button}>Sign in</button>
                  </div>
              </form>
     )
@@ -47,7 +49,6 @@ const Login = (props) => {
     }
 
     return <div>
-             <h1>Login</h1>
              <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
           </div>
 }
