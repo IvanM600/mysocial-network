@@ -3,11 +3,11 @@
    grid-template-columns: 2fr 10fr;
 }
 
-.dialogsItems {
-    padding: 20px;
-    color: white;
+.dialogsItems div{
+    padding: 10px;
+    color: black;
 }
-.dialogsItems .active {
+.dialogsItems:active {
     color: gold;
 }
 .dialogButton button {

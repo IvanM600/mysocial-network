@@ -50,7 +50,13 @@ const Login = (props) => {
 
     return <div>
              <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
+             <div>
+                 <div>Guest account:</div>
+                 <div>Email: free@samuraijs.com</div>
+                 <div>Password: free</div>
+             </div>
           </div>
+          
 }
 
 const mapStateToProps = (state) => ({

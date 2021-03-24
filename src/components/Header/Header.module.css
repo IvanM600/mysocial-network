@@ -3,7 +3,8 @@
     background-color: #808080;
  }
  .header img {
-   width: 30px;
+   width: 100px;
+
  }
  .loginBlock {
    float: right;
@@ -35,5 +36,9 @@
  .buttonLogin:hover{
   background: rgb(255, 255, 255, .2);
  }
+
+
+
+
 
  
