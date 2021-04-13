@@ -6,8 +6,10 @@ import { Redirect } from "react-router-dom"
 import { Field, reduxForm } from "redux-form";
 import {Textarea} from "../common/FormsControls/FormsControls"
 import { maxLengthCreator, required } from "../../utils/validators/validators";
+
  
 const maxLength50 = maxLengthCreator(50)
+
 
 const Dialogs = (props) => {
 
@@ -24,7 +26,7 @@ const Dialogs = (props) => {
         props.sendMessage(values.newMessageText);
     }
     
- if (!props.isAuth) return <Redirect to={"/login"} />
+ //if (!props.isAuth) return <Redirect to={"/login"} />
     
     return (
         <div className={classes.dialogs}>
@@ -46,7 +48,8 @@ return (
                 <Field component={Textarea} 
                        validate={[required, maxLength50]}
                        name="newMessageText"
-                       placeholder="Enter your message"/>
+                       placeholder="Enter your message"
+                       />
                </div>
                 <div className={classes.dialogButton}>
                     <button>Send</button>

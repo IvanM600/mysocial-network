@@ -1,15 +1,20 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
+import { Field, InjectedFormProps, reduxForm } from "redux-form";
 import {required, maxLengthCreator} from "../../utils/validators/validators";
 import {Input} from "../common/FormsControls/FormsControls"
-import {connect} from "react-redux"
 import {login}  from "../../Redux/auth-reducer"
 import { Redirect } from "react-router-dom"
 import classes from "./../common/FormsControls/FormsControls.module.css"
+import { AppStateType } from "../../Redux/redux-store";
+import {useDispatch, useSelector} from "react-redux"
 
 const maxLength25 = maxLengthCreator(25)
 
-const LoginForm = (props) => {
+type LoginFormOwnProps = {
+    captchaUrl: string | null
+}
+
+const LoginForm: React.FC<InjectedFormProps<LoginFormValuesType, LoginFormOwnProps> & LoginFormOwnProps> = (props) => {
     return  (
             <form className={classes.form} onSubmit={props.handleSubmit}>
                 <h1>Login</h1>
@@ -35,21 +40,35 @@ const LoginForm = (props) => {
              </form>
     )
 }
-const LoginReduxForm = reduxForm({
+const LoginReduxForm = reduxForm<LoginFormValuesType, LoginFormOwnProps>({
     form: "login"
 })(LoginForm)
 
-const Login = (props) => {
-    const onSubmit = (formData) => {
-        props.login(formData.email, formData.password, formData.rememberMe, formData.captcha)
+
+
+type LoginFormValuesType = {
+    email: string
+    password: string
+    rememberMe: boolean
+    captcha: string 
+}
+
+export const Login: React.FC = () => {
+
+    const captchaUrl = useSelector((state: AppStateType) => state.auth.captchaUrl)
+    const isAuth = useSelector((state: AppStateType) => state.auth.isAuth)
+    const dispatch = useDispatch()
+
+    const onSubmit = (formData: any) => {
+        dispatch(login(formData.email, formData.password, formData.rememberMe, formData.captcha))
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to={"profile"} />
     }
 
     return <div>
-             <LoginReduxForm onSubmit={onSubmit} captchaUrl={props.captchaUrl}/>
+             <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
              <div>
                  <div>Guest account:</div>
                  <div>Email: free@samuraijs.com</div>
@@ -59,9 +78,3 @@ const Login = (props) => {
           
 }
 
-const mapStateToProps = (state) => ({
-    captchaUrl: state.auth.captchaUrl,
-    isAuth: state.auth.isAuth
-})
-
-export default connect(mapStateToProps, {login})(Login)

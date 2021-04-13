@@ -1,14 +1,16 @@
-import React, {Component} from "react";
+import React from "react";
 import classes from "./MyPosts.module.css";
 import Post from "./Post/Post";
 import { Field, reduxForm } from "redux-form";
 import {required, maxLengthCreator} from "../../../utils/validators/validators"
 import {Textarea} from "../../common/FormsControls/FormsControls"
+import { useDispatch, useSelector } from "react-redux";
+import {actions} from "../../../Redux/profile-reducer"
 
 
 const maxLength10 = maxLengthCreator(10)
 
-class MyPosts extends Component {
+/*class MyPosts extends Component {
 
 render() {
   let addNewPost = (values) => {
@@ -33,7 +35,7 @@ render() {
 
   )
 }
-}
+}*/
 
 const MyForm = (props) => {
   return ( 
@@ -51,5 +53,37 @@ const MyForm = (props) => {
 const AddPostReduxForm = reduxForm({
   form: "addPostForm"
 })(MyForm)
+
+
+export const MyPosts = () => {
+
+     const posts = useSelector(state => state.profilesPage.posts)
+     const profile = useSelector(state => state.profilesPage.profile)
+     const newPostText = useSelector(state => state.profilesPage.newPostText)
+     const dispatch = useDispatch()
+  
+    let addNewPost = (values) => {
+      dispatch(actions.addPostActionCreator(values.newPostText))
+    }
+    
+    //let newPostElements = React.createRef();
+    
+    let postsElements = posts
+    .map( posts => <Post message={posts.message} likesCount={posts.likesCount} profile={profile} />)
+  
+    return (
+      <div className={classes.postsBlock}>
+        <h3>My posts</h3>
+  
+        <AddPostReduxForm onSubmit={addNewPost} />
+  
+        <div className={classes.Posts}>
+          { postsElements }
+        </div>
+      </div>
+  
+    )
+  }
+
 
 export default MyPosts
