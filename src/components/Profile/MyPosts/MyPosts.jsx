@@ -71,7 +71,7 @@ export const MyPosts = () => {
     let postsElements = posts
     .map( posts => <Post message={posts.message} likesCount={posts.likesCount} profile={profile} />)
   
-    return (
+    return ( 
       <div className={classes.postsBlock}>
         <h3>My posts</h3>
   
